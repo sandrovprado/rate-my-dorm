@@ -11,19 +11,20 @@ public class Review {
 
     @Id
     @SequenceGenerator(
-            name = "review_id_sequence",
-            sequenceName = "review_id_sequence"
+            name = "review_id_seq",
+            sequenceName = "review_id_seq",
+            allocationSize = 1
     )
 
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "review_id_sequence"
+            generator = "review_id_seq"
     )
     private Integer id;
     @Column(nullable = false)
     private String name;
     @Column(nullable = false)
-    private String dormName;
+    private String dorm_name;
     @Column(nullable = false)
     private String description;
     @Column(nullable = false)
@@ -34,7 +35,7 @@ public class Review {
     public Review(Integer id, String name, String dormName, String description, String date, Integer rating) {
         this.id = id;
         this.name = name;
-        this.dormName = dormName;
+        this.dorm_name = dormName;
         this.description = description;
         this.date = date;
         this.rating = rating;
@@ -45,7 +46,7 @@ public class Review {
 
     public Review(String name, String dormName, String description, String date, Integer rating) {
         this.name = name;
-        this.dormName = dormName;
+        this.dorm_name = dormName;
         this.description = description;
         this.date = date;
         this.rating = rating;
@@ -67,12 +68,12 @@ public class Review {
         this.name = name;
     }
 
-    public String getDormName() {
-        return dormName;
+    public String getDorm_name() {
+        return dorm_name;
     }
 
-    public void setDormName(String dormName) {
-        this.dormName = dormName;
+    public void setDorm_name(String dormName) {
+        this.dorm_name = dormName;
     }
 
     public String getDescription() {
@@ -104,12 +105,12 @@ public class Review {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Review review = (Review) o;
-        return Objects.equals(id, review.id) && Objects.equals(name, review.name) && Objects.equals(dormName, review.dormName) && Objects.equals(description, review.description) && Objects.equals(date, review.date) && Objects.equals(rating, review.rating);
+        return Objects.equals(id, review.id) && Objects.equals(name, review.name) && Objects.equals(dorm_name, review.dorm_name) && Objects.equals(description, review.description) && Objects.equals(date, review.date) && Objects.equals(rating, review.rating);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, dormName, description, date, rating);
+        return Objects.hash(id, name, dorm_name, description, date, rating);
     }
 
     @Override
@@ -117,7 +118,7 @@ public class Review {
         return "Review{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", dormName='" + dormName + '\'' +
+                ", dormName='" + dorm_name + '\'' +
                 ", description='" + description + '\'' +
                 ", date='" + date + '\'' +
                 ", rating=" + rating +

@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ReviewService {
@@ -41,7 +40,7 @@ public class ReviewService {
 
     public void deleteReviewById(Integer reviewId) {
         if (!reviewDao.existReviewWithId(reviewId)) {
-            throw new RuntimeException("Review not found with that id");
+            throw new ResourceNotFound("Review with id [%s] not found" .formatted(reviewId));
         }
         reviewDao.deleteReviewById(reviewId);
     }
@@ -56,8 +55,8 @@ public class ReviewService {
             changes = true;
         }
 
-        if (reviewUpdateRequest.dormName() != null && !reviewUpdateRequest.dormName().equals(review.getDormName())) {
-            review.setDormName(reviewUpdateRequest.dormName());
+        if (reviewUpdateRequest.dormName() != null && !reviewUpdateRequest.dormName().equals(review.getDorm_name())) {
+            review.setDorm_name(reviewUpdateRequest.dormName());
             changes = true;
         }
 

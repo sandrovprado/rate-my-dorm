@@ -8,7 +8,7 @@ public interface ReviewDao {
     List<Review> selectAllReviews();
     Optional<Review> selectReviewById(Integer id);
     void createReview(Review review);
-    void deleteReviewById(Integer id);
+    void deleteReviewById(Integer reviewId);
     void updateReview(Review update);
     boolean existReviewWithId(Integer id);
 }
